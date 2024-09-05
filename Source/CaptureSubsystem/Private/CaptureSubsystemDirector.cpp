@@ -461,8 +461,10 @@ void UCaptureSubsystemDirector::CreateEncodeThread()
 	// Set additional options for GPU encoding
 	if (EncoderCodec)
 	{
-		av_opt_set(VideoEncoderCodecContext->priv_data, "preset", "fast", 0);
 		av_opt_set_int(VideoEncoderCodecContext->priv_data, "gpu", 0, 0);
+		av_opt_set(VideoEncoderCodecContext->priv_data, "preset", "veryfast", 0);
+		av_opt_set(VideoEncoderCodecContext->priv_data, "profile", "baseline", 0);
+		av_opt_set(VideoEncoderCodecContext->priv_data, "tune", "zerolatency", 0);
 	}
 
 	// Set the global header flag if supported by the output format
@@ -1015,7 +1017,7 @@ void UCaptureSubsystemDirector::SetupEncoderContext(const AVCodec* Codec, int Bi
 		VideoEncoderCodecContext->height = OutWidth < OutHeight ? CorrectedHeight : OutHeight;
 
 		// Set the maximum number of consecutive B-frames
-		VideoEncoderCodecContext->max_b_frames = 1;
+		VideoEncoderCodecContext->max_b_frames = 0;
 
 		// Set the time base of the video codec context (numerator: 1, denominator: frames per second)
 		VideoEncoderCodecContext->time_base.num = 1;
@@ -1025,32 +1027,32 @@ void UCaptureSubsystemDirector::SetupEncoderContext(const AVCodec* Codec, int Bi
 		VideoEncoderCodecContext->pix_fmt = AV_PIX_FMT_YUV420P;
 
 		// Set the motion estimation range
-		VideoEncoderCodecContext->me_range = 16;
+		// VideoEncoderCodecContext->me_range = 16;
 
 		// Set the codec type to video
 		VideoEncoderCodecContext->codec_type = AVMEDIA_TYPE_VIDEO;
 
 		// Set the frame number
-		VideoEncoderCodecContext->frame_number = 1;
+		// VideoEncoderCodecContext->frame_number = 1;
 
 		// Set the quantization parameter for compression
-		VideoEncoderCodecContext->qcompress = 0.8;
+		// VideoEncoderCodecContext->qcompress = 0.8;
 
 		// Set the maximum quantization difference between frames
-		VideoEncoderCodecContext->max_qdiff = 4;
+		//VideoEncoderCodecContext->max_qdiff = 4;
 
 		// Set the level of the video encoding (e.g., H.264 level)
-		VideoEncoderCodecContext->level = 30;
+		// VideoEncoderCodecContext->level = 30;
 
 		// Set the size of the group of pictures (GOP)
 		VideoEncoderCodecContext->gop_size = 25;
 
 		// Set the minimum and maximum quantization parameters
-		VideoEncoderCodecContext->qmin = 18;
-		VideoEncoderCodecContext->qmax = 28;
+		// VideoEncoderCodecContext->qmin = 18;
+		// VideoEncoderCodecContext->qmax = 28;
 
 		// Set the motion estimation range
-		VideoEncoderCodecContext->me_range = 16;
+		// VideoEncoderCodecContext->me_range = 16;
 
 		// Set the frame rate of the video codec context (frames per second)
 		VideoEncoderCodecContext->framerate = { Options.FPS, 1 };
