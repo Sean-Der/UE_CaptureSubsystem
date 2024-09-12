@@ -29,7 +29,7 @@ public class CaptureSubsystem : ModuleRules
                 "Engine",
                 "RHI",
                 "InputCore",
-                "RenderCore", "D3D12RHI"
+                "RenderCore",
                 // ... add private dependencies that you statically link with here ...	
 			}
             );

@@ -20,7 +20,6 @@ void FCaptureSubsystemModule::StartupModule()
 	AVCodecLibrary = LoadLibrary(TEXT("avcodec"), TEXT("59"));
 	AVFormatLibrary = LoadLibrary(TEXT("avformat"), TEXT("59"));
 	SWScaleLibrary = LoadLibrary(TEXT("swscale"), TEXT("6"));
-	PostProcLibrary = LoadLibrary(TEXT("postproc"), TEXT("56"));
 	AVFilterLibrary = LoadLibrary(TEXT("avfilter"), TEXT("8"));
 	AVDeviceLibrary = LoadLibrary(TEXT("avdevice"), TEXT("59"));
 	Initialized = true;
@@ -36,7 +35,6 @@ void FCaptureSubsystemModule::ShutdownModule()
 	}
 	if (AVDeviceLibrary) FPlatformProcess::FreeDllHandle(AVDeviceLibrary);
 	if (AVFilterLibrary) FPlatformProcess::FreeDllHandle(AVFilterLibrary);
-	if (PostProcLibrary) FPlatformProcess::FreeDllHandle(PostProcLibrary);
 	if (SWScaleLibrary) FPlatformProcess::FreeDllHandle(SWScaleLibrary);
 	if (AVFormatLibrary) FPlatformProcess::FreeDllHandle(AVFormatLibrary);
 	if (AVCodecLibrary) FPlatformProcess::FreeDllHandle(AVCodecLibrary);
