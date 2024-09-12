@@ -53,7 +53,7 @@ public class FFMPEG : ModuleRules
 
             System.Console.WriteLine("... LibrariesPath -> " + LibrariesPath);
 
-            string[] libs = { "libavcodec.58.dylib", "libavdevice.58.dylib", "libavfilter.7.dylib", "libavformat.58.dylib", "libavutil.56.dylib", "libswresample.3.dylib", "libswscale.5.dylib", "libpostproc.55.dylib" };
+            string[] libs = { "libavcodec.59.dylib", "libavdevice.59.dylib", "libavfilter.8.dylib", "libavformat.59.dylib", "libavutil.57.dylib", "libswresample.4.dylib", "libswscale.6.dylib" };
             foreach (string lib in libs)
             {
                 PublicAdditionalLibraries.Add(Path.Combine(LibrariesPath, lib));
